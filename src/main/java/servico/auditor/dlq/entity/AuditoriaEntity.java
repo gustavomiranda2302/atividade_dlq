@@ -13,9 +13,9 @@ import jakarta.persistence.Table;
 public class AuditoriaEntity {
 
     @Id
-    private UUID idErro;
+    private UUID errorId;
 
-    private String nomeFila;
+    private String queueName;
 
     @Column(columnDefinition = "TEXT")
     private String payload;
@@ -26,20 +26,20 @@ public class AuditoriaEntity {
 
     private String severity;
 
-    public UUID getIdErro() {
-        return idErro;
+    public UUID getErrorId() {
+        return errorId;
     }
 
-    public void setIdErro(UUID idErro) {
-        this.idErro = idErro;
+    public void setErrorId(UUID errorId) {
+        this.errorId = errorId;
     }
 
-    public String getNomeFila() {
-        return nomeFila;
+    public String getQueueName() {
+        return queueName;
     }
 
-    public void setNomeFila(String nomeFila) {
-        this.nomeFila = nomeFila;
+    public void setQueueName(String queueName) {
+        this.queueName = queueName;
     }
 
     public String getPayload() {

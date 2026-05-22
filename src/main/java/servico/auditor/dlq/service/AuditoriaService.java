@@ -33,8 +33,8 @@ public class AuditoriaService {
 
         AuditoriaEntity entity = new AuditoriaEntity();
 
-        entity.setIdErro(UUID.randomUUID());
-        entity.setNomeFila("T04N_GUSTAVO_MIRANDA_DOS_SANTOS_DLQ.fifo");
+        entity.setErrorId(UUID.randomUUID());
+        entity.setQueueName("T04N_GUSTAVO_MIRANDA_DOS_SANTOS_DLQ.fifo");
         entity.setPayload(payload);
         entity.setTimestamp(Instant.now());
         entity.setStatus("PENDING_ANALYSIS");

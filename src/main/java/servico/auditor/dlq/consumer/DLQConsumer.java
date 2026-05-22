@@ -6,7 +6,6 @@ import org.springframework.stereotype.Component;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import io.awspring.cloud.sqs.annotation.SqsListener;
-import io.awspring.cloud.sqs.listener.acknowledgement.Acknowledgement;
 import servico.auditor.dlq.dto.EventoOrdemDTO;
 import servico.auditor.dlq.service.AuditoriaService;
 
@@ -19,7 +18,7 @@ public class DLQConsumer {
     private final ObjectMapper mapper = new ObjectMapper();
 
     @SqsListener(value = "T04N_GUSTAVO_MIRANDA_DOS_SANTOS_DLQ.fifo")
-    public void receberMensagem(String mensagem, Acknowledgement ack) {
+    public void receberMensagem(String mensagem) {
 
         try {
 
@@ -30,8 +29,6 @@ public class DLQConsumer {
                     = mapper.readValue(mensagem, EventoOrdemDTO.class);
 
             auditoriaService.salvar(mensagem, evento);
-
-            ack.acknowledge();
 
             System.out.println("Mensagem salva no banco.");
 
